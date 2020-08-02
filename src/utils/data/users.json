@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "name": "Luis Fuentes",
+        "email": "lfuentes@email.com",
+        "age": 22
+    },
+    {
+        "id": "2",
+        "name": "Jessica Fuentes",
+        "email": "jfuentes@email.com",
+        "age": 20
+    },
+    {
+        "id": "3",
+        "name": "Bibiana Garate",
+        "email": "bgarate@email.com",
+        "age": 20
+    },
+    {
+        "id": "6f6a83f3-aa74-4172-88bf-2b600789e28c",
+        "email": "rfuentes@email.com",
+        "name": "Rocket Fuentes",
+        "age": 2
+    },
+    {
+        "id": "002a3896-4bcd-4f2a-9088-004b89639d13",
+        "email": "tfuentes@email.com",
+        "name": "Tobi Fuentes",
+        "age": 5
+    }
+]
