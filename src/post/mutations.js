@@ -47,4 +47,37 @@ function deletePost(parent, args, { posts, comments }, info) {
   return post;
 }
 
-export { createPost, deletePost };
+function updatePost(parent, args, { posts }, info) {
+  let postIndex;
+  const {
+    id,
+    data: { title, body, published }
+  } = args;
+
+  let post = posts.find((post, index) => {
+    if (post.id === id) {
+      postIndex = index;
+
+      return true;
+    }
+  });
+
+  if (!post) throw new Error('Post not found');
+
+  const titleTaken = posts.some((post) => post.title === title);
+  if (titleTaken) throw new Error('Title taken');
+
+  post.title = title || post.title;
+  post.body = body || post.body;
+  post.published = published || post.published;
+  posts[postIndex] = post;
+
+  writeJsonFile({
+    fileName: 'posts',
+    data: posts
+  });
+
+  return post;
+}
+
+export { createPost, deletePost, updatePost };
