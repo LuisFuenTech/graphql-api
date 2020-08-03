@@ -16,6 +16,7 @@ const typeDefs = `
       ${user.definition.createUser}
       ${user.definition.deleteUser}
       ${post.definition.createPost}
+      ${post.definition.deletePost}
       ${comment.definition.createComment}
     }
 
@@ -40,7 +41,8 @@ const resolvers = {
     createUser: user.mutations.createUser,
     createPost: post.mutations.createPost,
     createComment: comment.mutations.createComment,
-    deleteUser: user.mutations.deleteUser
+    deleteUser: user.mutations.deleteUser,
+    deletePost: post.mutations.deletePost
   },
   Post: post.resolvers.relations,
   User: user.resolvers.relations,

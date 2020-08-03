@@ -1,12 +1,5 @@
 [
     {
-        "id": "11",
-        "title": "Programming Music",
-        "body": "",
-        "published": false,
-        "author": "3"
-    },
-    {
         "id": "12",
         "title": "Learn GraphQL",
         "body": "",

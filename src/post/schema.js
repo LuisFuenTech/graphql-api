@@ -11,6 +11,7 @@ type Post {
 
 const Query = 'posts(query: String): [Post!]!';
 const createPost = 'createPost(data: CreatePostInput): Post!';
+const deletePost = 'deletePost(id: ID!): Post!';
 const CreatePostInput = `
   CreatePostInput {
     title: String!
@@ -20,4 +21,4 @@ const CreatePostInput = `
   }
 `;
 
-export { schema, Query, createPost, CreatePostInput };
+export { schema, Query, createPost, CreatePostInput, deletePost };
