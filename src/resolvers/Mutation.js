@@ -11,6 +11,7 @@ const Mutation = {
   deleteComment: comment.mutations.deleteComment,
   updateUser: user.mutations.updateUser,
   updatePost: post.mutations.updatePost,
+  updateComment: comment.mutations.updateComment,
 };
 
 export { Mutation as default };

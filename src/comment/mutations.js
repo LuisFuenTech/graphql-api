@@ -42,4 +42,32 @@ function deleteComment(parent, args, { comments }, info) {
   return comment;
 }
 
-export { createComment, deleteComment };
+function updateComment(parent, args, { comments }, info) {
+  let commentIndex;
+  const {
+    id,
+    data: { text }
+  } = args;
+
+  let comment = comments.find((comment, index) => {
+    if (comment.id === id) {
+      commentIndex = index;
+
+      return true;
+    }
+  });
+
+  if (!comment) throw new Error('Comment not found');
+
+  comment.text = text || comment.text;
+  comments[commentIndex] = comment;
+
+  writeJsonFile({
+    fileName: 'comments',
+    data: comments
+  });
+
+  return comment;
+}
+
+export { createComment, deleteComment, updateComment };
