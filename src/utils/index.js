@@ -13,7 +13,7 @@ const writeJsonFile = ({ fileName, data }) => {
 
   if (fileExits) fs.unlinkSync(fileRoute);
 
-  fs.writeFileSync(fileRoute, JSON.stringify(data), 'utf8');
+  fs.writeFileSync(fileRoute, JSON.stringify(data, null, 4), 'utf8');
 };
 
 export { readJsonFile, writeJsonFile };

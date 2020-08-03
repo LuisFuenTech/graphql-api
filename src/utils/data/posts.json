@@ -1,1 +1,23 @@
-[{"id":"11","title":"Programming Music","body":"","published":false,"author":"3"},{"id":"12","title":"Learn GraphQL","body":"","published":false,"author":"2"},{"id":"13","title":"First Post","body":"This is my first post","published":true,"author":"1"},{"id":"76bb3b3e-63a6-42d9-a776-ba976a1e69a2","title":"My New Post","body":"Welcome to my very new post","published":true,"author":"6f6a83f3-aa74-4172-88bf-2b600789e28c"},{"id":"3670edd4-1395-4971-a8e0-a03fa9f25853","title":"My Second Post","body":"Welcome to my second post","published":false,"author":"6f6a83f3-aa74-4172-88bf-2b600789e28c"}]
+[
+    {
+        "id": "11",
+        "title": "Programming Music",
+        "body": "",
+        "published": false,
+        "author": "3"
+    },
+    {
+        "id": "12",
+        "title": "Learn GraphQL",
+        "body": "",
+        "published": false,
+        "author": "2"
+    },
+    {
+        "id": "13",
+        "title": "First Post",
+        "body": "This is my first post",
+        "published": true,
+        "author": "1"
+    }
+]

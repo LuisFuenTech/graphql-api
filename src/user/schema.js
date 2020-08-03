@@ -11,6 +11,7 @@ type User {
 
 const Query = 'users(query: String): [User!]!';
 const createUser = 'createUser(data: CreateUserInput): User!';
+const deleteUser = 'deleteUser(id: ID!): User!';
 const CreateUserInput = `
   CreateUserInput {
     name: String!
@@ -19,4 +20,4 @@ const CreateUserInput = `
   }
 `;
 
-export { schema, Query, createUser, CreateUserInput };
+export { schema, Query, createUser, CreateUserInput, deleteUser };

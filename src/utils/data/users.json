@@ -18,15 +18,9 @@
         "age": 20
     },
     {
-        "id": "6f6a83f3-aa74-4172-88bf-2b600789e28c",
+        "id": "203ba648-7594-4627-a0de-7486f794d764",
         "email": "rfuentes@email.com",
         "name": "Rocket Fuentes",
         "age": 2
-    },
-    {
-        "id": "002a3896-4bcd-4f2a-9088-004b89639d13",
-        "email": "tfuentes@email.com",
-        "name": "Tobi Fuentes",
-        "age": 5
     }
 ]

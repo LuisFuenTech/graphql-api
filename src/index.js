@@ -14,6 +14,7 @@ const typeDefs = `
 
     type Mutation {
       ${user.definition.createUser}
+      ${user.definition.deleteUser}
       ${post.definition.createPost}
       ${comment.definition.createComment}
     }
@@ -38,7 +39,8 @@ const resolvers = {
   Mutation: {
     createUser: user.mutations.createUser,
     createPost: post.mutations.createPost,
-    createComment: comment.mutations.createComment
+    createComment: comment.mutations.createComment,
+    deleteUser: user.mutations.deleteUser
   },
   Post: post.resolvers.relations,
   User: user.resolvers.relations,
