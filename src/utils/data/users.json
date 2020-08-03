@@ -32,7 +32,13 @@
     {
         "id": "5c39097f-7a1f-4aae-8f6c-acf1a86fe062",
         "email": "wsmith@email.com",
-        "name": "Will Smith",
-        "age": 52
+        "name": "William Smith",
+        "age": 54
+    },
+    {
+        "id": "c2e31ae3-5140-4137-84ca-bccc7d4d6877",
+        "email": "jsmith@email.com",
+        "name": "Jaden Smith",
+        "age": 22
     }
 ]

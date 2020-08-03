@@ -56,4 +56,37 @@ function deleteUser(parent, args, { users, comments, posts }, info) {
   return user;
 }
 
-export { createUser, deleteUser };
+function updateUser(parent, args, { users }, info) {
+  let userIndex;
+  const {
+    id,
+    data: { name, email, age }
+  } = args;
+
+  let user = users.find((user, index) => {
+    if (user.id === id) {
+      userIndex = index;
+
+      return true;
+    }
+  });
+
+  if (!user) throw new Error('User not found');
+
+  const emailTaken = users.some((user) => user.email === email);
+  if (emailTaken) throw new Error('Email taken');
+
+  user.name = name || user.name;
+  user.email = email || user.email;
+  user.age = age || user.age;
+  users[userIndex] = user;
+
+  writeJsonFile({
+    fileName: 'users',
+    data: users
+  });
+
+  return user;
+}
+
+export { createUser, deleteUser, updateUser };
