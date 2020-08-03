@@ -18,6 +18,7 @@ const typeDefs = `
       ${post.definition.createPost}
       ${post.definition.deletePost}
       ${comment.definition.createComment}
+      ${comment.definition.deleteComment}
     }
 
     input ${user.definition.CreateUserInput}
@@ -42,7 +43,8 @@ const resolvers = {
     createPost: post.mutations.createPost,
     createComment: comment.mutations.createComment,
     deleteUser: user.mutations.deleteUser,
-    deletePost: post.mutations.deletePost
+    deletePost: post.mutations.deletePost,
+    deleteComment: comment.mutations.deleteComment
   },
   Post: post.resolvers.relations,
   User: user.resolvers.relations,

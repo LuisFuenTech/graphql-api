@@ -9,6 +9,7 @@ type Comment {
 
 const Query = 'comments(query: String): [Comment!]!';
 const createComment = 'createComment(data: CreateCommentInput): Comment!';
+const deleteComment = 'deleteComment(id: ID!): Comment!';
 const CreateCommentInput = `
   CreateCommentInput {
     text: String!
@@ -17,4 +18,4 @@ const CreateCommentInput = `
   }
 `;
 
-export { schema, Query, createComment, CreateCommentInput };
+export { schema, Query, createComment, CreateCommentInput, deleteComment };

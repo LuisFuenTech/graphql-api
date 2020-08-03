@@ -28,4 +28,22 @@ function createComment(parent, args, ctx, info) {
   return newComment;
 }
 
-export { createComment };
+function deleteComment(parent, args, ctx, info) {
+  const { id } = args;
+  const comments = readJsonFile({ fileName: 'comments' });
+
+  const comment = comments.find((comment) => comment.id === id);
+
+  if (!comment) throw new Error('Commet not found');
+
+  const newCommentList = comments.filter((comment) => comment.id !== id);
+
+  writeJsonFile({
+    fileName: 'comments',
+    data: newCommentList
+  });
+
+  return comment;
+}
+
+export { createComment, deleteComment };
