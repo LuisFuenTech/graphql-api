@@ -22,5 +22,17 @@
         "email": "rfuentes@email.com",
         "name": "Rocket Fuentes",
         "age": 2
+    },
+    {
+        "id": "583f5d54-712c-4520-8892-ea034c789ea1",
+        "email": "rsfuentes@email.com",
+        "name": "Rosemary Fuentes",
+        "age": 42
+    },
+    {
+        "id": "5c39097f-7a1f-4aae-8f6c-acf1a86fe062",
+        "email": "wsmith@email.com",
+        "name": "Will Smith",
+        "age": 52
     }
 ]

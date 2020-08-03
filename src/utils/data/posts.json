@@ -12,5 +12,12 @@
         "body": "This is my first post",
         "published": true,
         "author": "1"
+    },
+    {
+        "id": "54302da1-f1db-4a3d-8e07-923f86c08d55",
+        "title": "My Second Post",
+        "body": "Welcome to my second post",
+        "published": true,
+        "author": "3"
     }
 ]

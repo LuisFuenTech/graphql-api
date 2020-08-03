@@ -1,11 +1,10 @@
-import { readJsonFile, writeJsonFile } from '../utils';
+import { writeJsonFile } from '../utils';
 import { v4 as uuidV4 } from 'uuid';
 
-function createUser(parent, args, ctx, info) {
+function createUser(parent, args, { users }, info) {
   const {
     data: { email, name, age }
   } = args;
-  const users = readJsonFile({ fileName: 'users' });
   const emailTaken = users.some((user) => user.email === email);
 
   if (emailTaken) throw new Error('Email taken.');
@@ -23,12 +22,8 @@ function createUser(parent, args, ctx, info) {
   return newUser;
 }
 
-function deleteUser(parent, args, ctx, info) {
+function deleteUser(parent, args, { users, comments, posts }, info) {
   const { id } = args;
-  const users = readJsonFile({ fileName: 'users' });
-  const posts = readJsonFile({ fileName: 'posts' });
-  const comments = readJsonFile({ fileName: 'comments' });
-
   const user = users.find((user) => user.id === id);
 
   if (!user) throw new Error('User not found');

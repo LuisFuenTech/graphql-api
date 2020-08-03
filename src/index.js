@@ -2,6 +2,7 @@ import { GraphQLServer } from 'graphql-yoga';
 import * as user from './user';
 import * as post from './post';
 import * as comment from './comment';
+import { users, posts, comments } from './utils/data';
 
 const typeDefs = `
     type Query {
@@ -53,7 +54,8 @@ const resolvers = {
 
 const server = new GraphQLServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: { users, comments, posts }
 });
 
 server.start(() => {

@@ -1,10 +1,4 @@
-import { readJsonFile } from '../utils';
-
-const users = readJsonFile({ fileName: 'users' });
-const posts = readJsonFile({ fileName: 'posts' });
-const comments = readJsonFile({ fileName: 'comments' });
-
-function Query(parent, args, ctx, info) {
+function Query(parent, args, { posts }, info) {
   const { query } = args;
   if (!query) return posts;
 
@@ -16,15 +10,15 @@ function Query(parent, args, ctx, info) {
 }
 
 const relations = {
-  author(parent, args, ctx, info) {
+  author(parent, args, { users }, info) {
     return users.find((user) => user.id === parent.author);
   },
-  comments(parent, args, ctx, info) {
+  comments(parent, args, { comments }, info) {
     return comments.filter((comment) => comment.post === parent.id);
   }
 };
 
-function post(parent, args, ctx, info) {
+function post(parent, args, { posts }, info) {
   const { query } = args;
   if (!query) return posts[0];
 }

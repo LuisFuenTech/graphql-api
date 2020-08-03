@@ -1,12 +1,10 @@
-import { readJsonFile, writeJsonFile } from '../utils';
+import { writeJsonFile } from '../utils';
 import { v4 as uuidV4 } from 'uuid';
 
-function createPost(parent, args, ctx, info) {
+function createPost(parent, args, { users, posts }, info) {
   const {
     data: { title, body, published, author }
   } = args;
-  const posts = readJsonFile({ fileName: 'posts' });
-  const users = readJsonFile({ fileName: 'users' });
 
   const userExists = users.some((user) => user.id === author);
 
@@ -26,10 +24,8 @@ function createPost(parent, args, ctx, info) {
   return newPost;
 }
 
-function deletePost(parent, args, ctx, info) {
+function deletePost(parent, args, { posts, comments }, info) {
   const { id } = args;
-  const posts = readJsonFile({ fileName: 'posts' });
-  const comments = readJsonFile({ fileName: 'comments' });
 
   const post = posts.find((post) => post.id === id);
 
