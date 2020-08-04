@@ -21,12 +21,18 @@ function createPost(parent, args, { users, posts, pubsub }, info) {
   posts.push(newPost);
   writeJsonFile({ fileName: 'posts', data: posts });
 
-  if (published) pubsub.publish('post', { post: newPost });
+  if (published)
+    pubsub.publish('post', {
+      post: {
+        mutation: 'CREATED',
+        data: newPost
+      }
+    });
 
   return newPost;
 }
 
-function deletePost(parent, args, { posts, comments }, info) {
+function deletePost(parent, args, { posts, comments, pubsub }, info) {
   const { id } = args;
 
   const post = posts.find((post) => post.id === id);
@@ -46,10 +52,19 @@ function deletePost(parent, args, { posts, comments }, info) {
     data: newPostList
   });
 
+  if (post.published) {
+    pubsub.publish('post', {
+      post: {
+        mutation: 'DELETED',
+        data: post
+      }
+    });
+  }
+
   return post;
 }
 
-function updatePost(parent, args, { posts }, info) {
+function updatePost(parent, args, { posts, pubsub }, info) {
   let postIndex;
   const {
     id,
@@ -64,20 +79,46 @@ function updatePost(parent, args, { posts }, info) {
     }
   });
 
+  console.log('updatePost -> post', post);
+
   if (!post) throw new Error('Post not found');
 
+  const originalPost = { ...post };
   const titleTaken = posts.some((post) => post.title === title);
   if (titleTaken) throw new Error('Title taken');
 
   post.title = title || post.title;
   post.body = body || post.body;
-  post.published = published || post.published;
+  post.published = typeof published === 'boolean' ? published : post.published;
   posts[postIndex] = post;
 
   writeJsonFile({
     fileName: 'posts',
     data: posts
   });
+
+  if (originalPost.published && !published) {
+    pubsub.publish('post', {
+      post: {
+        mutation: 'DELETED',
+        data: originalPost
+      }
+    });
+  } else if (!originalPost.published && published) {
+    pubsub.publish('post', {
+      post: {
+        mutation: 'CREATED',
+        data: post
+      }
+    });
+  } else if (post.published) {
+    pubsub.publish('post', {
+      post: {
+        mutation: 'UPDATED',
+        data: post
+      }
+    });
+  }
 
   return post;
 }

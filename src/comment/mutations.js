@@ -20,15 +20,19 @@ function createComment(parent, args, { users, comments, posts, pubsub }, info) {
   };
 
   comments.push(newComment);
-  console.log("createComment -> newComment", newComment)
   writeJsonFile({ fileName: 'comments', data: comments });
 
-  pubsub.publish(`commet:${postId}`, { comment: newComment });
+  pubsub.publish(`commet:${postId}`, {
+    comment: {
+      mutation: 'CREATED',
+      data: newComment
+    }
+  });
 
   return newComment;
 }
 
-function deleteComment(parent, args, { comments }, info) {
+function deleteComment(parent, args, { comments, pubsub }, info) {
   const { id } = args;
 
   const comment = comments.find((comment) => comment.id === id);
@@ -42,10 +46,17 @@ function deleteComment(parent, args, { comments }, info) {
     data: newCommentList
   });
 
+  pubsub.publish(`commet:${postId}`, {
+    comment: {
+      mutation: 'DELETED',
+      data: comment
+    }
+  });
+
   return comment;
 }
 
-function updateComment(parent, args, { comments }, info) {
+function updateComment(parent, args, { comments, pubsub }, info) {
   let commentIndex;
   const {
     id,
@@ -68,6 +79,13 @@ function updateComment(parent, args, { comments }, info) {
   writeJsonFile({
     fileName: 'comments',
     data: comments
+  });
+
+  pubsub.publish(`commet:${comment.post}`, {
+    comment: {
+      mutation: 'UPDATED',
+      data: comment
+    }
   });
 
   return comment;

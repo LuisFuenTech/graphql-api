@@ -82,5 +82,33 @@
         "body": "Welcome to my 5 post",
         "published": true,
         "author": "2"
+    },
+    {
+        "id": "9f2a9a52-b9d5-46a3-a26f-a42f6946a798",
+        "title": "My 6 Post",
+        "body": "Welcome to my 6 post",
+        "published": true,
+        "author": "2"
+    },
+    {
+        "id": "543b6331-11b1-48d9-92e0-4970717ee666",
+        "title": "My 6 Post",
+        "body": "Welcome to my 6 post",
+        "published": true,
+        "author": "2"
+    },
+    {
+        "id": "50e90252-6f9f-4439-9365-99cc12e55803",
+        "title": "New one",
+        "body": "Welcome to my 6 post",
+        "published": true,
+        "author": "2"
+    },
+    {
+        "id": "b85c6b73-9e36-4813-8ed8-0f65bbab74cf",
+        "title": "New 3",
+        "body": "Welcome to my 6 post",
+        "published": true,
+        "author": "2"
     }
 ]
