@@ -1,7 +1,7 @@
 import { writeJsonFile } from '../utils';
 import { v4 as uuidV4 } from 'uuid';
 
-function createComment(parent, args, { users, comments, posts }, info) {
+function createComment(parent, args, { users, comments, posts, pubsub }, info) {
   const {
     data: { author, text, postId }
   } = args;
@@ -20,7 +20,10 @@ function createComment(parent, args, { users, comments, posts }, info) {
   };
 
   comments.push(newComment);
+  console.log("createComment -> newComment", newComment)
   writeJsonFile({ fileName: 'comments', data: comments });
+
+  pubsub.publish(`commet:${postId}`, { comment: newComment });
 
   return newComment;
 }

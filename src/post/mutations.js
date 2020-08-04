@@ -1,7 +1,7 @@
 import { writeJsonFile } from '../utils';
 import { v4 as uuidV4 } from 'uuid';
 
-function createPost(parent, args, { users, posts }, info) {
+function createPost(parent, args, { users, posts, pubsub }, info) {
   const {
     data: { title, body, published, author }
   } = args;
@@ -20,6 +20,8 @@ function createPost(parent, args, { users, posts }, info) {
 
   posts.push(newPost);
   writeJsonFile({ fileName: 'posts', data: posts });
+
+  if (published) pubsub.publish('post', { post: newPost });
 
   return newPost;
 }
